@@ -30,14 +30,15 @@ var Drop = this.Drop = new Class({
 
 	initialize: function(el, options){
 		this.element = document.id(el);
-		this.dropZone = new Element('div').inject(document.body);
+		this.parent = this.element.getParent();
+		this.dropZone = new Element('div').inject(this.element, 'after');
 		this.update();
 		this.setOptions(options);
 		this.attach();
 	},
 
 	update: function(){
-		var info = this.element.getCoordinates(document.body);
+		var info = this.element.getCoordinates(this.parent);
 		this.dropZone.setStyles({
 			position: 'absolute',
 			width: info.width,
