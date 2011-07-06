@@ -49,7 +49,7 @@ var Drop = this.Drop = new Class({
 
 	attach: function(){
 		this.dropZone.addEvents({
-			dragenter: this.bound('start'),
+			dragenter: this.bound('enter'),
 			dragleave: this.bound('leave'),
 			dragover: this.bound('over'),
 			drop: this.bound('drop')
@@ -58,16 +58,16 @@ var Drop = this.Drop = new Class({
 
 	detach: function(){
 		this.dropZone.removeEvents({
-			dragenter: this.bound('start'),
+			dragenter: this.bound('enter'),
 			dragleave: this.bound('leave'),
 			dragover: this.bound('over'),
 			drop: this.bound('drop')
 		});
 	},
 
-	start: function(e){
+	enter: function(e){
 		if (e && e.preventDefault) e.preventDefault();
-		this.fireEvent('start', e);
+		this.fireEvent('enter', e);
 	},
 
 	leave: function(e){
